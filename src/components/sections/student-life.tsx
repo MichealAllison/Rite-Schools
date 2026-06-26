@@ -66,13 +66,15 @@ const activities = [
   },
 ];
 
-const sizeClasses = {
+type ActivitySize = "large" | "medium" | "small";
+
+const sizeClasses: Record<ActivitySize, string> = {
   large: "lg:col-span-2 lg:row-span-2",
   medium: "lg:col-span-1 lg:row-span-1",
   small: "lg:col-span-1 lg:row-span-1",
 };
 
-const heights = {
+const heights: Record<ActivitySize, string> = {
   large: "h-[400px]",
   medium: "h-[280px]",
   small: "h-[280px]",
@@ -93,7 +95,7 @@ export default function StudentLife() {
             <ScrollReveal key={activity.title} delay={i * 0.08}>
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className={`group relative rounded-2xl overflow-hidden cursor-pointer ${sizeClasses[activity.size]} ${heights[activity.size]}`}
+                className={`group relative rounded-2xl overflow-hidden cursor-pointer ${sizeClasses[activity.size as ActivitySize]} ${heights[activity.size as ActivitySize]}`}
               >
                 {/* Background Gradient */}
                 <div
